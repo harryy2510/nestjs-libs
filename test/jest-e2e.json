@@ -1,0 +1,13 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "@harryy/nestjs-relay/(.*)": "<rootDir>/../libs/nestjs-relay/src/$1",
+    "@harryy/nestjs-relay": "<rootDir>/../libs/nestjs-relay/src"
+  }
+}

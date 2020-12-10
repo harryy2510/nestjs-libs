@@ -1,0 +1,85 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateUserInput {
+  clientMutationId: String
+  user: UserInput!
+}
+
+type CreateUserResponse {
+  clientMutationId: String
+  payload: User
+}
+
+input DeleteUserInput {
+  clientMutationId: String
+  id: ID!
+}
+
+type DeleteUserResponse {
+  clientMutationId: String
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): CreateUserResponse
+  deleteUser(input: DeleteUserInput!): DeleteUserResponse
+  updateUser(input: UpdateUserInput!): UpdateUserResponse
+}
+
+interface Node {
+  id: ID!
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
+
+input PartialUserInput {
+  email: String
+  firstName: String
+  lastName: String
+}
+
+type Query {
+  node(id: ID!): Node
+  user(id: ID!): User
+  users(after: String, before: String, first: Int, last: Int): UserConnection
+}
+
+input UpdateUserInput {
+  clientMutationId: String
+  id: ID!
+  user: PartialUserInput!
+}
+
+type UpdateUserResponse {
+  clientMutationId: String
+  payload: User
+}
+
+type User implements Node {
+  email: String!
+  firstName: String!
+  id: ID!
+  lastName: String
+}
+
+type UserConnection {
+  edges: [UserEdge]
+  pageInfo: PageInfo!
+}
+
+type UserEdge {
+  cursor: String!
+  node: User
+}
+
+input UserInput {
+  email: String!
+  firstName: String!
+  lastName: String
+}

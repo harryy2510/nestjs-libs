@@ -1,0 +1,22 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "projects": {
+    "nestjs-relay": {
+      "type": "library",
+      "root": "libs/nestjs-relay",
+      "entryFile": "index",
+      "sourceRoot": "libs/nestjs-relay/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/nestjs-relay/tsconfig.lib.json"
+      }
+    }
+  },
+  "compilerOptions": {
+    "webpack": true,
+    "plugins": ["@nestjs/graphql/plugin"]
+  },
+  "generateOptions": {
+    "spec": false
+  }
+}

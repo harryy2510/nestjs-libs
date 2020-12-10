@@ -1,0 +1,89 @@
+{
+  "name": "gql-relay",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "license": "UNLICENSED",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"libs/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
+  },
+  "dependencies": {
+    "@nestjs/common": "^7.6.1",
+    "@nestjs/graphql": "^7.9.1",
+    "class-validator": "^0.12.2",
+    "graphql": "^15.4.0",
+    "graphql-relay": "^0.6.0",
+    "typeorm": "^0.2.29"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2",
+    "rxjs": "^6.6.3",
+    "graphql-tools": "^7.0.2",
+    "reflect-metadata": "^0.1.13",
+    "faker": "^5.1.0",
+    "apollo-server-express": "^2.19.0",
+    "@nestjs/typeorm": "^7.1.5",
+    "@nestjs/core": "^7.6.1",
+    "@nestjs/cli": "^7.5.4",
+    "@nestjs/platform-express": "^7.6.1",
+    "@nestjs/schematics": "^7.2.5",
+    "@nestjs/testing": "^7.6.1",
+    "@types/express": "^4.17.9",
+    "@types/faker": "^5.1.5",
+    "@types/graphql-relay": "^0.6.0",
+    "@types/jest": "^26.0.18",
+    "@types/node": "^14.14.12",
+    "@types/supertest": "^2.0.10",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "jest": "^26.6.3",
+    "pg": "^8.5.1",
+    "prettier": "^2.2.1",
+    "supertest": "^6.0.1",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.1.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": ".",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "./coverage",
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/src/",
+      "<rootDir>/libs/"
+    ],
+    "moduleNameMapper": {
+      "@harryy/nestjs-relay/(.*)": "<rootDir>/libs/nestjs-relay/src/$1",
+      "@harryy/nestjs-relay": "<rootDir>/libs/nestjs-relay/src"
+    }
+  }
+}
