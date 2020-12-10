@@ -1,6 +1,6 @@
 {
   "name": "@harryy/nestjs-relay",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Toolkit for building Relay-compliant GraphQL API  with NestJS",
   "author": "Hariom Sharma <hariom0sharma@gmail.com>",
   "license": "MIT",
