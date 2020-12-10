@@ -1,3 +1,10 @@
+### [0.1.2](https://github.com/harryy2510/nestjs-relay/compare/0.1.1...0.1.2) (2020-12-10)
+
+
+### Bug Fixes
+
+* empty folder publish ([56dd770](https://github.com/harryy2510/nestjs-relay/commit/56dd770f846f3f8ef670cf15dcfdfaee685c895c))
+
 ### [0.1.1](https://github.com/harryy2510/nestjs-relay/compare/0.1.0...0.1.1) (2020-12-10)
 
 ### Bug Fixes
