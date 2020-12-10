@@ -1,0 +1,22 @@
+{
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": "@commitlint/config-conventional",
+      "infile": "CHANGELOG.md"
+    }
+  },
+  "git": {
+    "commitMessage": "chore: release v${version}",
+    "requireCommits": true
+  },
+  "npm": {
+    "publishPath": "./dist/libs/nestjs-relay",
+    "skipChecks": true
+  },
+  "hooks": {
+    "after:bump": [
+      "npm run build",
+      "node ./scripts/clean-and-copy-package-json.js"
+    ]
+  }
+}
