@@ -6,6 +6,7 @@ const targetPath = path.resolve(
   '..',
   'dist',
   'nestjs-relay',
+  'src',
   'package.json',
 );
 

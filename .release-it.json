@@ -10,7 +10,7 @@
     "requireCommits": true
   },
   "npm": {
-    "publishPath": "./dist/nestjs-relay",
+    "publishPath": "./dist/nestjs-relay/src",
     "skipChecks": true,
     "publish": true
   },
