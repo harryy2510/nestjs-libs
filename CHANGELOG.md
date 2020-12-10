@@ -1,3 +1,10 @@
+### [5.0.1](https://github.com/harryy2510/nestjs-relay/compare/0.1.2...5.0.1) (2020-12-10)
+
+
+### Bug Fixes
+
+* version bump ([cc216dc](https://github.com/harryy2510/nestjs-relay/commit/cc216dc579231ceb3bcafa4ffab35b5ce82dcdf2))
+
 ### [0.1.2](https://github.com/harryy2510/nestjs-relay/compare/0.1.1...0.1.2) (2020-12-10)
 
 
