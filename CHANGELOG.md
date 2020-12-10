@@ -1,3 +1,10 @@
+### [5.0.2](https://github.com/harryy2510/nestjs-relay/compare/5.0.1...5.0.2) (2020-12-10)
+
+
+### Bug Fixes
+
+* publish folder path ([22c6044](https://github.com/harryy2510/nestjs-relay/commit/22c60443c299515087b8f9cd1b814231d540c8f9))
+
 ### [5.0.1](https://github.com/harryy2510/nestjs-relay/compare/0.1.2...5.0.1) (2020-12-10)
 
 
