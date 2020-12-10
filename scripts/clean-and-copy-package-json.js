@@ -5,7 +5,6 @@ const targetPath = path.resolve(
   __dirname,
   '..',
   'dist',
-  'libs',
   'nestjs-relay',
   'package.json',
 );
