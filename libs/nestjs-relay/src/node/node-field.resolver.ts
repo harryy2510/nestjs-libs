@@ -25,7 +25,7 @@ export class NodeFieldResolver implements NodeResolver {
     return this.resolveNode(id);
   }
 
-  @Query(() => [NodeInterface], { name: 'nodes', nullable: true })
+  @Query(() => [NodeInterface], { name: 'nodes', nullable: 'items' })
   nodes(@Args('ids', { type: () => [GlobalId] }) ids: GlobalIdType[]) {
     return this.resolveNodes(ids);
   }
