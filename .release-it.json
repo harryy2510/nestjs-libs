@@ -11,7 +11,8 @@
   },
   "npm": {
     "publishPath": "./dist/libs/nestjs-relay",
-    "skipChecks": true
+    "skipChecks": true,
+    "publish": true
   },
   "hooks": {
     "after:bump": [
