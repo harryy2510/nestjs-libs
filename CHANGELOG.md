@@ -1,3 +1,10 @@
+## [5.1.0](https://github.com/harryy2510/nestjs-relay/compare/5.0.4...5.1.0) (2020-12-11)
+
+
+### Features
+
+* structure change ([2d5675f](https://github.com/harryy2510/nestjs-relay/commit/2d5675ff261af198c4159787fc2934772ec4ddf3))
+
 ### [5.0.4](https://github.com/harryy2510/nestjs-relay/compare/5.0.3...5.0.4) (2020-12-11)
 
 
