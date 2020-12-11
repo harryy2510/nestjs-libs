@@ -9,7 +9,7 @@ export class GlobalId implements ResolvedGlobalId {
     this.id = args.id;
   }
 
-  get value() {
+  toString() {
     return this.id;
   }
 }
