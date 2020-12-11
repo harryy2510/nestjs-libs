@@ -1,10 +1,10 @@
-import { NodeInterface, NodeType } from '@harryy/nestjs-relay';
-import { Field } from '@nestjs/graphql';
+import { Field, ObjectType } from '@nestjs/graphql';
 import { Column, Entity } from 'typeorm';
+import { Node } from '@harryy/nestjs-relay';
 
-@NodeType()
 @Entity('user')
-export class User extends NodeInterface {
+@ObjectType({ implements: Node })
+export class User extends Node {
   @Field()
   @Column()
   firstName: string;

@@ -9,7 +9,7 @@ input CreateUserInput {
 
 type CreateUserResponse {
   clientMutationId: String
-  payload: User
+  payload: User!
 }
 
 input DeleteUserInput {
@@ -21,10 +21,15 @@ type DeleteUserResponse {
   clientMutationId: String
 }
 
+type ListUserResponse {
+  edges: [UserEdge!]!
+  pageInfo: PageInfo!
+}
+
 type Mutation {
-  createUser(input: CreateUserInput!): CreateUserResponse
-  deleteUser(input: DeleteUserInput!): DeleteUserResponse
-  updateUser(input: UpdateUserInput!): UpdateUserResponse
+  createUser(input: CreateUserInput!): CreateUserResponse!
+  deleteUser(input: DeleteUserInput!): DeleteUserResponse!
+  updateUser(input: UpdateUserInput!): User!
 }
 
 interface Node {
@@ -47,7 +52,7 @@ input PartialUserInput {
 type Query {
   node(id: ID!): Node
   user(id: ID!): User
-  users(after: String, before: String, first: Int, last: Int): UserConnection
+  users(after: String, before: String, first: Int, last: Int): ListUserResponse!
 }
 
 input UpdateUserInput {
@@ -56,21 +61,11 @@ input UpdateUserInput {
   user: PartialUserInput!
 }
 
-type UpdateUserResponse {
-  clientMutationId: String
-  payload: User
-}
-
 type User implements Node {
   email: String!
   firstName: String!
   id: ID!
   lastName: String
-}
-
-type UserConnection {
-  edges: [UserEdge]
-  pageInfo: PageInfo!
 }
 
 type UserEdge {

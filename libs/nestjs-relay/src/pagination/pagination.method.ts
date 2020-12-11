@@ -1,5 +1,5 @@
 import { FindManyOptions, Repository, SelectQueryBuilder } from 'typeorm';
-import { ConnectionArgs } from '../connection';
+import { PaginationArgs } from './pagination-args.type';
 import * as Relay from 'graphql-relay';
 
 type PagingMeta =
@@ -7,7 +7,7 @@ type PagingMeta =
   | { pagingType: 'backward'; before?: string; last: number }
   | { pagingType: 'none' };
 
-function getMeta(args: ConnectionArgs): PagingMeta {
+function getMeta(args: PaginationArgs): PagingMeta {
   const { first = 0, last = 0, after, before } = args;
   const isForwardPaging = !!first || !!after;
   const isBackwardPaging = !!last || !!before;
@@ -19,7 +19,7 @@ function getMeta(args: ConnectionArgs): PagingMeta {
     : { pagingType: 'none' };
 }
 
-export function getPagingParameters(args: ConnectionArgs) {
+export function getPagingParameters(args: PaginationArgs) {
   const meta = getMeta(args);
 
   switch (meta.pagingType) {
@@ -50,7 +50,7 @@ export function getPagingParameters(args: ConnectionArgs) {
 
 export async function findAndPaginate<T>(
   condition: FindManyOptions<T>,
-  connArgs: ConnectionArgs,
+  connArgs: PaginationArgs,
   repository: Repository<T>,
 ) {
   const { limit, offset } = getPagingParameters(connArgs);
@@ -67,7 +67,7 @@ export async function findAndPaginate<T>(
 
 export async function getManyAndPaginate<T>(
   queryBuilder: SelectQueryBuilder<T>,
-  connArgs: ConnectionArgs,
+  connArgs: PaginationArgs,
 ) {
   const { limit, offset } = getPagingParameters(connArgs);
   const [entities, count] = await queryBuilder

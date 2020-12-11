@@ -1,12 +1,22 @@
 import { Type } from '@nestjs/common';
-import { Info, Parent, Resolver } from '@nestjs/graphql';
-import { GraphQLObjectType } from 'graphql';
-import { GlobalIdType } from './global-id.type';
-import { GlobalId } from './global-id.class';
 import {
-  GlobalIdField,
-  GlobalIdFieldOptions,
-} from './global-id-field.decorator';
+  FieldOptions,
+  Info,
+  Parent,
+  ResolveField,
+  Resolver,
+} from '@nestjs/graphql';
+import { GraphQLObjectType } from 'graphql';
+import { GlobalId, GlobalIdType } from './global-id';
+
+export type GlobalIdFieldOptions = Pick<FieldOptions, 'complexity'>;
+
+export const GlobalIdField = (options?: GlobalIdFieldOptions) =>
+  ResolveField(() => GlobalId, {
+    name: 'id',
+    nullable: false,
+    ...options,
+  });
 
 export interface ResolverParent {
   id: GlobalIdType;

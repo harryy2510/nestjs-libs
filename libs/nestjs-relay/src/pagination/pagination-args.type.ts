@@ -37,7 +37,7 @@ class CannotUseWith implements ValidatorConstraintInterface {
 }
 
 @ArgsType()
-export class ConnectionArgs implements Relay.ConnectionArguments {
+export class PaginationArgs implements Relay.ConnectionArguments {
   @Field(() => String, { nullable: true })
   @ValidateIf((o) => o.before !== undefined)
   @Validate(CannotUseWithout, ['last'])

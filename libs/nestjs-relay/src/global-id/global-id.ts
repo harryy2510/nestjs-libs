@@ -1,7 +1,22 @@
+import { fromGlobalId, ResolvedGlobalId, toGlobalId } from 'graphql-relay';
 import { CustomScalar, Scalar } from '@nestjs/graphql';
 import { GraphQLError, Kind, ValueNode } from 'graphql';
-import { fromGlobalId, toGlobalId } from 'graphql-relay';
-import { GlobalId } from './global-id.class';
+
+export class GlobalId implements ResolvedGlobalId {
+  type: string;
+  id: string;
+
+  constructor(args: ResolvedGlobalId) {
+    this.type = args.type;
+    this.id = args.id;
+  }
+
+  toString() {
+    return this.id;
+  }
+}
+
+export type GlobalIdType = GlobalId;
 
 @Scalar('ID', () => GlobalId)
 export class GlobalIdScalar implements CustomScalar<string, GlobalId> {
