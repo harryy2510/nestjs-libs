@@ -1,3 +1,10 @@
+### [5.0.4](https://github.com/harryy2510/nestjs-relay/compare/5.0.3...5.0.4) (2020-12-11)
+
+
+### Bug Fixes
+
+* added toString method to global id class ([fef0266](https://github.com/harryy2510/nestjs-relay/commit/fef026652e9aef357cf33639d907b3b027f6fde3))
+
 ### [5.0.3](https://github.com/harryy2510/nestjs-relay/compare/5.0.2...5.0.3) (2020-12-10)
 
 
