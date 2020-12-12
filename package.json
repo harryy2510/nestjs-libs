@@ -1,5 +1,5 @@
 {
-  "name": "@harryy/nestjs-relay",
+  "name": "@harryy/nestjs-libs",
   "version": "5.1.0",
   "description": "Toolkit for building Relay-compliant GraphQL API  with NestJS",
   "author": "Hariom Sharma <hariom0sharma@gmail.com>",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@nestjs/common": "^7.6.1",
-    "@nestjs/graphql": "^7.9.1",
+    "class-transformer": "^0.3.1",
     "class-validator": "^0.12.2",
     "graphql": "^15.4.0",
     "graphql-relay": "^0.6.0",
@@ -38,6 +38,7 @@
   "devDependencies": {
     "@nestjs/cli": "^7.5.4",
     "@nestjs/core": "^7.6.1",
+    "@nestjs/graphql": "^7.9.1",
     "@nestjs/platform-express": "^7.6.1",
     "@nestjs/schematics": "^7.2.5",
     "@nestjs/testing": "^7.6.1",
@@ -63,6 +64,7 @@
     "prettier": "^2.2.1",
     "reflect-metadata": "^0.1.13",
     "release-it": "^14.2.2",
+    "release-it-yarn-workspaces": "^2.0.0",
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.3",
     "supertest": "^6.0.1",

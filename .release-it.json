@@ -3,21 +3,19 @@
     "@release-it/conventional-changelog": {
       "preset": "conventionalcommits",
       "infile": "CHANGELOG.md"
+    },
+    "release-it-yarn-workspaces": {
+      "skipChecks": true,
+      "publish": true,
+      "workspaces": ["dist/*"]
     }
   },
+  "npm": false,
   "git": {
     "commitMessage": "chore: release v${version}",
     "requireCommits": true
   },
-  "npm": {
-    "publishPath": "./dist/nestjs-relay/src",
-    "skipChecks": true,
-    "publish": true
-  },
   "hooks": {
-    "after:bump": [
-      "npm run build",
-      "node ./scripts/clean-and-copy-package-json.js"
-    ]
+    "after:bump": ["npm run build", "node ./scripts/clean-and-copy.js"]
   }
 }

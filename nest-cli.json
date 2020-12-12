@@ -14,7 +14,15 @@
   },
   "compilerOptions": {
     "webpack": true,
-    "plugins": ["@nestjs/graphql/plugin"]
+    "plugins": [
+      {
+        "name": "@nestjs/graphql",
+        "options": {
+          "typeFileNameSuffix": [".dto.ts"],
+          "introspectComments": true
+        }
+      }
+    ]
   },
   "generateOptions": {
     "spec": false

@@ -65,7 +65,7 @@ type User implements Node {
   email: String!
   firstName: String!
   id: ID!
-  lastName: String
+  lastName: String!
 }
 
 type UserEdge {
