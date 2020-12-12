@@ -1,10 +1,10 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Column, Entity } from 'typeorm';
-import { Node } from '@harryy/nestjs-relay';
+import { CreateNode, Node } from '@harryy/nestjs-relay';
 
 @Entity('user')
 @ObjectType({ implements: Node })
-export class User extends Node {
+export class User extends CreateNode('User') {
   @Field()
   @Column()
   firstName: string;

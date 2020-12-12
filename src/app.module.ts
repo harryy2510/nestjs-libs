@@ -5,7 +5,6 @@ import { join } from 'path';
 import { GraphQLModule } from '@nestjs/graphql';
 import { UsersModule } from './users/users.module';
 import { NodeModule } from './node/node.module';
-import { RelayModule } from '@harryy/nestjs-relay';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
@@ -29,9 +28,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       autoLoadEntities: true,
     }),
-    UsersModule,
     NodeModule,
-    RelayModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

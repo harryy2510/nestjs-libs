@@ -1,15 +1,10 @@
-import { Field, InputType, ObjectType } from '@nestjs/graphql';
-import {
-  GlobalId,
-  GlobalIdType,
-  MutationInput,
-  MutationResponse,
-} from '@harryy/nestjs-relay';
+import { Field, ID, InputType, ObjectType } from '@nestjs/graphql';
+import { MutationInput, MutationResponse } from '@harryy/nestjs-relay';
 
 @InputType()
 export class DeleteUserInput extends MutationInput {
-  @Field(() => GlobalId)
-  id: GlobalIdType;
+  @Field(() => ID)
+  id: string;
 }
 
 @ObjectType()

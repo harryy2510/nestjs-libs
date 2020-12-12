@@ -1,19 +1,17 @@
-import { Args, Query, Resolver } from '@nestjs/graphql';
-import { GlobalId, GlobalIdType, Node } from '@harryy/nestjs-relay';
-import { UsersService } from '../users/users.service';
+import { Args, ID, Query, Resolver } from '@nestjs/graphql';
+import { Node } from '@harryy/nestjs-relay';
+import { UsersService } from 'src/users/users.service';
+import { fromGlobalId } from 'graphql-relay';
 
 @Resolver(Node)
 export class NodeResolver {
   constructor(private readonly usersService: UsersService) {}
 
   @Query(() => Node, { nullable: true })
-  node(
-    @Args('id', { type: () => GlobalId })
-    globalId: GlobalIdType,
-  ): Promise<Node | undefined> {
-    switch (globalId.type) {
+  node(@Args('id', { type: () => ID }) id: string): Promise<Node | undefined> {
+    switch (fromGlobalId(id).type) {
       case 'User':
-        return this.usersService.findOne(globalId.toString());
+        return this.usersService.findOne(id);
       default:
         return null;
     }

@@ -31,7 +31,7 @@ export class UsersService {
   }
 
   update(id: string, userInput: PartialUserInput) {
-    return this.usersRepository.update(id, userInput);
+    // return this.usersRepository.update(id, userInput);
   }
 
   async delete(id: string): Promise<void> {

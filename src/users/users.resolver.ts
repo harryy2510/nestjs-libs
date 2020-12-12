@@ -1,22 +1,15 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { UsersService } from './users.service';
 import { User } from './entities/user.entity';
-import {
-  createMutationResponse,
-  GlobalId,
-  GlobalIdFieldResolver,
-  GlobalIdType,
-} from '@harryy/nestjs-relay';
+import { createMutationResponse } from '@harryy/nestjs-relay';
 import { CreateUserInput, CreateUserResponse } from './dto/create-user.dto';
 import { ListUserArgs, ListUserResponse } from './dto/list-user.dto';
 import { DeleteUserInput, DeleteUserResponse } from './dto/delete-user.dto';
 import { UpdateUserInput } from './dto/update-user.dto';
 
 @Resolver(User)
-export class UsersResolver extends GlobalIdFieldResolver(User) {
-  constructor(private readonly usersService: UsersService) {
-    super();
-  }
+export class UsersResolver {
+  constructor(private readonly usersService: UsersService) {}
 
   @Query(() => ListUserResponse, { name: 'users' })
   listUsers(@Args() listUserArgs: ListUserArgs) {
@@ -24,8 +17,8 @@ export class UsersResolver extends GlobalIdFieldResolver(User) {
   }
 
   @Query(() => User, { name: 'user', nullable: true })
-  getUser(@Args('id', { type: () => GlobalId }) globalId: GlobalIdType) {
-    return this.usersService.findOne(globalId.toString());
+  getUser(@Args('id', { type: () => ID }) id: string) {
+    return this.usersService.findOne(id);
   }
 
   @Mutation(() => CreateUserResponse)
@@ -40,16 +33,13 @@ export class UsersResolver extends GlobalIdFieldResolver(User) {
   async updateUser(@Args('input') updateUserInput: UpdateUserInput) {
     return createMutationResponse(
       updateUserInput,
-      await this.usersService.update(
-        updateUserInput.id.toString(),
-        updateUserInput.user,
-      ),
+      await this.usersService.update(updateUserInput.id, updateUserInput.user),
     );
   }
 
   @Mutation(() => DeleteUserResponse)
   async deleteUser(@Args('input') deleteUserInput: DeleteUserInput) {
-    await this.usersService.delete(deleteUserInput.id.toString());
+    await this.usersService.delete(deleteUserInput.id);
     return createMutationResponse(deleteUserInput);
   }
 }
