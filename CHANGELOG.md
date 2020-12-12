@@ -1,3 +1,10 @@
+### [5.1.2](https://github.com/harryy2510/nestjs-relay/compare/5.1.1...5.1.2) (2020-12-12)
+
+
+### Bug Fixes
+
+* remove global id ([f796a9e](https://github.com/harryy2510/nestjs-relay/commit/f796a9e376689c9ab2413254d34dc2162e925a57))
+
 ### [5.1.1](https://github.com/harryy2510/nestjs-relay/compare/5.1.0...5.1.1) (2020-12-12)
 
 ## [5.1.0](https://github.com/harryy2510/nestjs-relay/compare/5.0.4...5.1.0) (2020-12-11)
