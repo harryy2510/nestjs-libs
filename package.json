@@ -1,6 +1,6 @@
 {
   "name": "@harryy/nestjs-libs",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "description": "Toolkit for building Relay-compliant GraphQL API  with NestJS",
   "author": "Hariom Sharma <hariom0sharma@gmail.com>",
   "license": "MIT",
@@ -12,13 +12,12 @@
     "registry": "https://registry.npmjs.org"
   },
   "scripts": {
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf build",
     "build": "tsc -p tsconfig.release.json",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",

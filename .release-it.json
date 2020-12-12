@@ -7,7 +7,7 @@
     "release-it-yarn-workspaces": {
       "skipChecks": true,
       "publish": true,
-      "workspaces": ["dist/*"]
+      "workspaces": ["build/*"]
     }
   },
   "npm": false,
