@@ -1,10 +1,16 @@
-import { Field, ObjectType } from '@nestjs/graphql';
-import { CreateNode, Node } from '@harryy/nestjs-relay';
+import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Node, NodeKey } from '@harryy/nestjs-relay';
 import { Entity, Property, Unique } from '@mikro-orm/core';
+import { toGlobalId } from 'graphql-relay';
+import { v4 } from 'uuid';
 
 @Entity()
 @ObjectType({ implements: Node })
-export class User extends CreateNode('User') {
+export class User extends Node<User> {
+  @Field(() => ID)
+  @NodeKey()
+  id: string = toGlobalId('User', v4());
+
   @Field()
   @Property()
   firstName!: string;

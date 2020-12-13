@@ -14,7 +14,7 @@ export class UsersService {
   ) {}
 
   async create(userInput: UserInput) {
-    const createdUser = this.userRepository.create(userInput);
+    const createdUser = new User(userInput as any);
     await this.userRepository.nativeInsert(createdUser);
     return createdUser;
   }
