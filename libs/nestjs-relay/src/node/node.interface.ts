@@ -5,6 +5,7 @@ import {
   PrimaryKey,
   Type,
   ValidationError,
+  BaseEntity,
 } from '@mikro-orm/core';
 import { Field, ID, InterfaceType } from '@nestjs/graphql';
 import { fromGlobalId, toGlobalId } from 'graphql-relay';
@@ -15,7 +16,7 @@ import { isUUID } from '@nestjs/common/utils/is-uuid';
 @InterfaceType('Node')
 export class Node extends CreateNode('Node') {}
 
-export function CreateNode(entityType: string) {
+export function CreateNode<T extends { id: string }>(entityType: string) {
   class NodeIdType extends Type<string, string> {
     convertToDatabaseValue(value: string): string {
       const globalId = fromGlobalId(value);
@@ -39,12 +40,17 @@ export function CreateNode(entityType: string) {
 
   @Entity({ abstract: true })
   @InterfaceType({ isAbstract: true })
-  abstract class Node {
+  abstract class Node extends BaseEntity<T, 'id'> {
     @Field(() => ID)
     @PrimaryKey({
       type: NodeIdType,
     })
     id: string = toGlobalId(entityType, v4());
+
+    constructor(body: T) {
+      super();
+      this.assign(body);
+    }
   }
 
   return Node as any;
