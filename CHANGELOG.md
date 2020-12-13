@@ -1,3 +1,10 @@
+### [5.1.3](https://github.com/harryy2510/nestjs-relay/compare/5.1.2...5.1.3) (2020-12-13)
+
+
+### Bug Fixes
+
+* removed typeorm and added mikro orm ([4fc0035](https://github.com/harryy2510/nestjs-relay/commit/4fc0035662181e7cec6a597243c7b5c172f95c05))
+
 ### [5.1.2](https://github.com/harryy2510/nestjs-relay/compare/5.1.1...5.1.2) (2020-12-12)
 
 
