@@ -1,3 +1,10 @@
+### [5.1.8](https://github.com/harryy2510/nestjs-relay/compare/5.1.7...5.1.8) (2020-12-13)
+
+
+### Bug Fixes
+
+* added populate to find and paginate ([b326f36](https://github.com/harryy2510/nestjs-relay/commit/b326f362c723d659a596bdd17d6048ad53caa6c3))
+
 ### [5.1.7](https://github.com/harryy2510/nestjs-relay/compare/5.1.6...5.1.7) (2020-12-13)
 
 
