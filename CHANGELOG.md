@@ -1,3 +1,11 @@
+### [5.1.9](https://github.com/harryy2510/nestjs-relay/compare/5.1.8...5.1.9) (2020-12-13)
+
+
+### Bug Fixes
+
+* node key param ([9289385](https://github.com/harryy2510/nestjs-relay/commit/92893855ec09483b9dc5ec7b16e4f396b8bfbffc))
+* node key param ([da7819f](https://github.com/harryy2510/nestjs-relay/commit/da7819fdd4b327280d9997f3cc0873f1ff1b398c))
+
 ### [5.1.8](https://github.com/harryy2510/nestjs-relay/compare/5.1.7...5.1.8) (2020-12-13)
 
 
