@@ -8,7 +8,7 @@ import { v4 } from 'uuid';
 @ObjectType({ implements: Node })
 export class User extends Node<User> {
   @Field(() => ID)
-  @NodeKey()
+  @NodeKey('User')
   id: string = toGlobalId('User', v4());
 
   @Field()

@@ -8,7 +8,7 @@ export class Node<T extends { id: string } = any, U = any> extends BaseEntity<
   'id'
 > {
   @Field(() => ID)
-  @NodeKey()
+  @NodeKey('Node')
   id!: string;
 
   constructor(input: U) {
