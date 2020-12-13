@@ -1,6 +1,5 @@
 import {
   AnyEntity,
-  MetadataStorage,
   PrimaryKey,
   PrimaryKeyOptions,
   Type,
@@ -9,16 +8,12 @@ import {
 import { fromGlobalId, toGlobalId } from 'graphql-relay';
 import { isUUID } from '@nestjs/common/utils/is-uuid';
 
-export function NodeKey<T>(options: PrimaryKeyOptions<T> = {}) {
+export function NodeKey<T>(type: string, options: PrimaryKeyOptions<T> = {}) {
   return function (target: AnyEntity, propertyName: string) {
-    const { className } = MetadataStorage.getMetadataFromDecorator(
-      target.constructor,
-    );
-
     class NodeIdType extends Type<string, string> {
       convertToDatabaseValue(value: string): string {
         const globalId = fromGlobalId(value);
-        if (globalId.type === className && isUUID(globalId.id, '4')) {
+        if (globalId.type && isUUID(globalId.id, '4')) {
           value = globalId.id;
         }
         if (isUUID(value, '4')) {
@@ -28,13 +23,14 @@ export function NodeKey<T>(options: PrimaryKeyOptions<T> = {}) {
       }
 
       convertToJSValue(value: string): string {
-        return toGlobalId(className, value);
+        return toGlobalId(type, value);
       }
 
       getColumnType() {
         return 'varchar(36)';
       }
     }
+
     options.type = NodeIdType;
     return PrimaryKey(options)(target, propertyName);
   };
