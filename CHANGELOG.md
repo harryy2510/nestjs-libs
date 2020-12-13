@@ -1,3 +1,10 @@
+### [5.1.5](https://github.com/harryy2510/nestjs-relay/compare/5.1.4...5.1.5) (2020-12-13)
+
+
+### Bug Fixes
+
+* constructor create new object ([271325a](https://github.com/harryy2510/nestjs-relay/commit/271325a3d19eed84a7da069d7c8b12d5f85a87e7))
+
 ### [5.1.4](https://github.com/harryy2510/nestjs-relay/compare/5.1.3...5.1.4) (2020-12-13)
 
 ### [5.1.3](https://github.com/harryy2510/nestjs-relay/compare/5.1.2...5.1.3) (2020-12-13)
