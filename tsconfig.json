@@ -12,12 +12,8 @@
     "baseUrl": "./",
     "incremental": true,
     "paths": {
-      "@harryy/nestjs-relay": [
-        "libs/nestjs-relay/src"
-      ],
-      "@harryy/nestjs-relay/*": [
-        "libs/nestjs-relay/src/*"
-      ]
+      "@harryy/nestjs-relay": ["libs/nestjs-relay/src"],
+      "@harryy/nestjs-relay/*": ["libs/nestjs-relay/src/*"]
     }
   }
 }

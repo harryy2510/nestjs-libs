@@ -3,9 +3,10 @@ import { UsersService } from './users.service';
 import { User } from './entities/user.entity';
 import { createMutationResponse } from '@harryy/nestjs-relay';
 import { CreateUserInput, CreateUserResponse } from './dto/create-user.dto';
-import { ListUserArgs, ListUserResponse } from './dto/list-user.dto';
+// import { ListUserArgs, ListUserResponse } from './dto/list-user.dto';
 import { DeleteUserInput, DeleteUserResponse } from './dto/delete-user.dto';
 import { UpdateUserInput } from './dto/update-user.dto';
+import { ListUserArgs, ListUserResponse } from './dto/list-user.dto';
 
 @Resolver(User)
 export class UsersResolver {

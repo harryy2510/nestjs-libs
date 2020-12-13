@@ -27,22 +27,25 @@
     "release": "release-it"
   },
   "dependencies": {
+    "@mikro-orm/core": "^4.3.4",
+    "@mikro-orm/nestjs": "^4.2.0",
+    "@mikro-orm/postgresql": "^4.3.4",
     "@nestjs/common": "^7.6.1",
     "class-transformer": "^0.3.1",
     "class-validator": "^0.12.2",
     "graphql": "^15.4.0",
     "graphql-relay": "^0.6.0",
-    "typeorm": "^0.2.29",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@mikro-orm/cli": "^4.3.4",
+    "@mikro-orm/sql-highlighter": "^1.0.1",
     "@nestjs/cli": "^7.5.4",
     "@nestjs/core": "^7.6.1",
     "@nestjs/graphql": "^7.9.1",
     "@nestjs/platform-express": "^7.6.1",
     "@nestjs/schematics": "^7.2.5",
     "@nestjs/testing": "^7.6.1",
-    "@nestjs/typeorm": "^7.1.5",
     "@release-it/conventional-changelog": "^2.0.0",
     "@types/express": "^4.17.9",
     "@types/faker": "^5.1.5",
@@ -61,7 +64,6 @@
     "fs-extra": "^9.0.1",
     "graphql-tools": "^7.0.2",
     "jest": "^26.6.3",
-    "pg": "^8.5.1",
     "prettier": "^2.2.1",
     "reflect-metadata": "^0.1.13",
     "release-it": "^14.2.2",
@@ -99,5 +101,11 @@
       "@harryy/nestjs-relay/(.*)": "<rootDir>/libs/nestjs-relay/src/$1",
       "@harryy/nestjs-relay": "<rootDir>/libs/nestjs-relay/src"
     }
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./mikro-orm.config.ts"
+    ]
   }
 }

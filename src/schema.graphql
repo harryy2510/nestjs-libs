@@ -55,6 +55,11 @@ type Query {
   users(after: String, before: String, first: Int, last: Int): ListUserResponse!
 }
 
+"""
+`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
+"""
+scalar Timestamp
+
 input UpdateUserInput {
   clientMutationId: String
   id: ID!
@@ -62,10 +67,13 @@ input UpdateUserInput {
 }
 
 type User implements Node {
+  createdAt: Timestamp!
+  deleteAt: Timestamp!
   email: String!
   firstName: String!
   id: ID!
   lastName: String!
+  updatedAt: Timestamp!
 }
 
 type UserEdge {

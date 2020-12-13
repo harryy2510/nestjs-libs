@@ -1,19 +1,32 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { Column, Entity } from 'typeorm';
 import { CreateNode, Node } from '@harryy/nestjs-relay';
+import { Entity, Property, Unique } from '@mikro-orm/core';
 
-@Entity('user')
+@Entity()
 @ObjectType({ implements: Node })
 export class User extends CreateNode('User') {
   @Field()
-  @Column()
-  firstName: string;
+  @Property()
+  firstName!: string;
 
   @Field()
-  @Column()
+  @Property({ nullable: true })
   lastName?: string;
 
   @Field()
-  @Column({ unique: true })
-  email: string;
+  @Unique()
+  @Property()
+  email!: string;
+
+  @Field()
+  @Property()
+  createdAt: Date = new Date();
+
+  @Field()
+  @Property({ onUpdate: () => new Date() })
+  updatedAt: Date = new Date();
+
+  @Field()
+  @Property({ nullable: true })
+  deleteAt?: Date;
 }
