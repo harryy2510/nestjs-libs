@@ -1,3 +1,10 @@
+### [5.1.6](https://github.com/harryy2510/nestjs-relay/compare/5.1.5...5.1.6) (2020-12-13)
+
+
+### Bug Fixes
+
+* added node key ([efc5996](https://github.com/harryy2510/nestjs-relay/commit/efc5996fa766131cb06dd72635cc2f02ef54dda6))
+
 ### [5.1.5](https://github.com/harryy2510/nestjs-relay/compare/5.1.4...5.1.5) (2020-12-13)
 
 
