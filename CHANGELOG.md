@@ -1,3 +1,10 @@
+### [5.1.14](https://github.com/harryy2510/nestjs-relay/compare/5.1.13...5.1.14) (2020-12-14)
+
+
+### Bug Fixes
+
+* fix typings ([5a4c6b7](https://github.com/harryy2510/nestjs-relay/commit/5a4c6b770e1c8b045f7938549f8f89370d9dd2aa))
+
 ### [5.1.13](https://github.com/harryy2510/nestjs-relay/compare/5.1.12...5.1.13) (2020-12-14)
 
 
