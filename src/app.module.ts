@@ -5,11 +5,7 @@ import { join } from 'path';
 import { GraphQLModule } from '@nestjs/graphql';
 import { UsersModule } from './users/users.module';
 import { NodeModule } from './node/node.module';
-import { MikroOrmModule } from '@mikro-orm/nestjs';
-import { Logger } from '@nestjs/common';
-import { SqlHighlighter } from '@mikro-orm/sql-highlighter';
-
-const logger = new Logger('MikroORM');
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
@@ -21,19 +17,19 @@ const logger = new Logger('MikroORM');
         numberScalarMode: 'integer',
       },
     }),
-    MikroOrmModule.forRoot({
+    TypeOrmModule.forRoot({
       host: 'localhost',
       port: 5555,
-      dbName: 'test',
-      user: 'test',
+      database: 'test',
+      username: 'test',
       password: 'test',
-      type: 'postgresql',
+      type: 'postgres',
+      synchronize: true,
+      logging: true,
+      entities: [__dirname + '/src/**/*.entity.ts'],
+      migrations: ['src/**/**/*.migration.ts'],
+      subscribers: ['src/**/**/*.subscriber.ts'],
       autoLoadEntities: true,
-      entities: ['./dist/src/**/*.entity.{js,ts}'],
-      entitiesTs: ['./src/**/*.entity.{js,ts}'],
-      highlighter: new SqlHighlighter(),
-      debug: true,
-      logger: logger.log.bind(logger),
     }),
     NodeModule,
     UsersModule,

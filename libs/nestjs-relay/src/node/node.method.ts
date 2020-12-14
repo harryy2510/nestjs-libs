@@ -6,7 +6,7 @@ export function createNodeId(type: string) {
   if (!prefix) {
     throw new Error(`Prefix note registered for type - ${type}`);
   }
-  return `${prefix}_${nanoid()}`;
+  return `${prefix}_${nanoid(21)}`;
 }
 
 export function parseId(id: string) {

@@ -68,7 +68,6 @@ input UpdateUserInput {
 
 type User implements Node {
   createdAt: Timestamp!
-  deleteAt: Timestamp!
   email: String!
   firstName: String!
   id: ID!

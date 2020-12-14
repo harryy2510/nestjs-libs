@@ -1,6 +1,6 @@
 import { PaginationArgs } from './pagination-args.type';
 import * as Relay from 'graphql-relay';
-import { EntityRepository, FilterQuery, FindOptions } from '@mikro-orm/core';
+import { FindManyOptions, Repository } from 'typeorm';
 
 type PagingMeta =
   | { pagingType: 'forward'; after?: string; first: number }
@@ -49,19 +49,17 @@ export function getPagingParameters(args: PaginationArgs) {
 }
 
 export async function findAndPaginate<T>(
-  repository: EntityRepository<T>,
+  condition: FindManyOptions<T>,
   paginationArgs: PaginationArgs,
-  where: FilterQuery<T> = {},
-  populate: string[] = [],
-  findOptions: FindOptions<T> = {},
+  repository: Repository<T>,
 ) {
   const { limit, offset } = getPagingParameters(paginationArgs);
-  const [entities, count] = await repository.findAndCount(where, {
-    ...findOptions,
-    offset,
-    limit,
-    populate,
+  const [entities, count] = await repository.findAndCount({
+    ...condition,
+    skip: offset,
+    take: limit,
   });
+
   return Relay.connectionFromArraySlice(entities, paginationArgs, {
     arrayLength: count,
     sliceStart: offset || 0,

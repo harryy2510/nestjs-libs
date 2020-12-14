@@ -1,7 +1,7 @@
 import { Args, ID, Query, Resolver } from '@nestjs/graphql';
-import { Node } from '@harryy/nestjs-relay';
+import { Node, parseId } from '@harryy/nestjs-relay';
 import { UsersService } from 'src/users/users.service';
-import { fromGlobalId } from 'graphql-relay';
+import { UserType } from '../users/entities/user.entity';
 
 @Resolver(Node)
 export class NodeResolver {
@@ -9,8 +9,8 @@ export class NodeResolver {
 
   @Query(() => Node, { nullable: true })
   node(@Args('id', { type: () => ID }) id: string): Promise<Node | undefined> {
-    switch (fromGlobalId(id).type) {
-      case 'User':
+    switch (parseId(id).type) {
+      case UserType:
         return this.usersService.findOne(id);
       default:
         return null;

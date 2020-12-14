@@ -1,6 +1,12 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { createNodeId, Node, registerNodePrefix } from '@harryy/nestjs-relay';
-import { Entity, PrimaryKey, Property, Unique } from '@mikro-orm/core';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 export const UserType = 'User';
 export const UserPrefix = 'usr';
@@ -11,31 +17,29 @@ registerNodePrefix(UserType, UserPrefix);
 @ObjectType({ implements: Node })
 export class User extends Node<User> {
   @Field(() => ID)
-  @PrimaryKey()
+  @PrimaryColumn({
+    length: 25,
+    type: 'varchar',
+  })
   id: string = createNodeId(UserType);
 
   @Field()
-  @Property()
+  @Column()
   firstName!: string;
 
   @Field()
-  @Property({ nullable: true })
+  @Column({ nullable: true })
   lastName?: string;
 
   @Field()
-  @Unique()
-  @Property()
+  @Column({ unique: true })
   email!: string;
 
   @Field()
-  @Property()
-  createdAt: Date = new Date();
+  @CreateDateColumn()
+  createdAt: Date;
 
   @Field()
-  @Property({ onUpdate: () => new Date() })
-  updatedAt: Date = new Date();
-
-  @Field()
-  @Property({ nullable: true })
-  deleteAt?: Date;
+  @UpdateDateColumn()
+  updatedAt: Date;
 }
