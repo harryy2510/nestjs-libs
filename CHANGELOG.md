@@ -1,3 +1,12 @@
+### [5.1.13](https://github.com/harryy2510/nestjs-relay/compare/5.1.12...5.1.13) (2020-12-14)
+
+
+### Bug Fixes
+
+* removed mikro orm ([3c0d990](https://github.com/harryy2510/nestjs-relay/commit/3c0d9902657f686c5134c172a03be856be62877f))
+* removed mikro orm ([d1a7f86](https://github.com/harryy2510/nestjs-relay/commit/d1a7f86b00407a01342004a68ccd0b8178b32c50))
+* used node id column ([c22ff0a](https://github.com/harryy2510/nestjs-relay/commit/c22ff0afa2787caeaab618ade0f942cffa83543f))
+
 ### [5.1.12](https://github.com/harryy2510/nestjs-relay/compare/5.1.11...5.1.12) (2020-12-14)
 
 ### [5.1.11](https://github.com/harryy2510/nestjs-relay/compare/5.1.10...5.1.11) (2020-12-14)
