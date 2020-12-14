@@ -6,4 +6,4 @@ import { User } from '../entities/user.entity';
 export class ListUserArgs extends PaginationArgs {}
 
 @ObjectType()
-export class ListUserResponse extends Paginated(User) {}
+export class ListUserResponse extends Paginated(() => User) {}

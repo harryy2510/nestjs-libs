@@ -1,5 +1,6 @@
 import { Type } from '@nestjs/common';
 import { Field, InputType, ObjectType } from '@nestjs/graphql';
+import { AnyFunction } from '../types';
 
 function PayloadEmpty(): any {
   @ObjectType({ isAbstract: true })
@@ -11,7 +12,7 @@ function PayloadEmpty(): any {
   return Payload;
 }
 
-function PayloadWithClass<T>(classRef?: Type<T>): any {
+function PayloadWithClass<T>(classRef: Type<T>): any {
   @ObjectType({ isAbstract: true })
   abstract class Payload {
     @Field(() => String, { nullable: true })
@@ -24,9 +25,9 @@ function PayloadWithClass<T>(classRef?: Type<T>): any {
   return Payload;
 }
 
-export function MutationResponse<T>(classRef?: Type<T>): any {
-  if (classRef) {
-    return PayloadWithClass(classRef);
+export function MutationResponse<T>(typeFunc?: AnyFunction<T>): any {
+  if (typeFunc) {
+    return PayloadWithClass(typeFunc());
   }
   return PayloadEmpty();
 }

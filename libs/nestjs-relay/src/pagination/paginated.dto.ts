@@ -1,9 +1,11 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { Type } from '@nestjs/common';
 import * as Relay from 'graphql-relay';
 import { PageInfo } from './page-info.type';
+import { AnyFunction } from '@harryy/nestjs-relay/types';
 
-export function Paginated<T>(classRef: Type<T>): any {
+export function Paginated<T>(typeFunc: AnyFunction): any {
+  const classRef = typeFunc();
+
   @ObjectType(`${classRef.name}Edge`)
   abstract class EdgeType implements Relay.Edge<T> {
     @Field(() => String)

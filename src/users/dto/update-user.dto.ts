@@ -16,4 +16,4 @@ export class UpdateUserInput extends MutationInput {
 }
 
 @ObjectType()
-export class UpdateUserResponse extends MutationResponse(User) {}
+export class UpdateUserResponse extends MutationResponse(() => User) {}
