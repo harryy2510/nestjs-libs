@@ -1,3 +1,10 @@
+### [5.1.16](https://github.com/harryy2510/nestjs-relay/compare/5.1.15...5.1.16) (2020-12-14)
+
+
+### Bug Fixes
+
+* fix any function return type ([454140c](https://github.com/harryy2510/nestjs-relay/commit/454140cc8842216375a1e1c41e57d8665ef8ff39))
+
 ### [5.1.15](https://github.com/harryy2510/nestjs-relay/compare/5.1.14...5.1.15) (2020-12-14)
 
 
