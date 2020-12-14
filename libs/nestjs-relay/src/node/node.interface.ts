@@ -1,17 +1,19 @@
-import { BaseEntity } from '@mikro-orm/core';
+import { BaseEntity, PrimaryKey } from '@mikro-orm/core';
 import { Field, ID, InterfaceType } from '@nestjs/graphql';
-import { NodeKey } from './node.key';
+import { createNodeId, registerNodePrefix } from './node.method';
+
+export const NodeType = 'Node';
+export const NodePrefix = 'nod';
+
+registerNodePrefix(NodeType, NodePrefix);
 
 @InterfaceType('Node')
-export class Node<T extends { id: string } = any, U = any> extends BaseEntity<
-  T,
-  'id'
-> {
+export class Node<T extends { id: string } = any> extends BaseEntity<T, 'id'> {
   @Field(() => ID)
-  @NodeKey('Node')
-  id!: string;
+  @PrimaryKey()
+  id: string = createNodeId(NodeType);
 
-  constructor(input: U) {
+  constructor(input: Partial<T>) {
     super();
     this.assign(input);
   }
