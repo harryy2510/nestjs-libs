@@ -1,3 +1,10 @@
+### [5.1.11](https://github.com/harryy2510/nestjs-relay/compare/5.1.10...5.1.11) (2020-12-14)
+
+
+### Bug Fixes
+
+* added id parsing function ([3e0e3ce](https://github.com/harryy2510/nestjs-relay/commit/3e0e3ce6044494922749568fa44335399683e584))
+
 ### [5.1.10](https://github.com/harryy2510/nestjs-relay/compare/5.1.9...5.1.10) (2020-12-14)
 
 
