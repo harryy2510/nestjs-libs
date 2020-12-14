@@ -1,3 +1,11 @@
+### [5.1.15](https://github.com/harryy2510/nestjs-relay/compare/5.1.14...5.1.15) (2020-12-14)
+
+
+### Bug Fixes
+
+* fix class ref func ([d8459b4](https://github.com/harryy2510/nestjs-relay/commit/d8459b473978f9e8309df8b48414caa72b9b6edd))
+* fix class ref func ([7211074](https://github.com/harryy2510/nestjs-relay/commit/7211074af864613c3d0c5236eac135237b83e8cc))
+
 ### [5.1.14](https://github.com/harryy2510/nestjs-relay/compare/5.1.13...5.1.14) (2020-12-14)
 
 
