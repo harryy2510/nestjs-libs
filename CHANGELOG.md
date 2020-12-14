@@ -1,3 +1,5 @@
+### [5.1.12](https://github.com/harryy2510/nestjs-relay/compare/5.1.11...5.1.12) (2020-12-14)
+
 ### [5.1.11](https://github.com/harryy2510/nestjs-relay/compare/5.1.10...5.1.11) (2020-12-14)
 
 
