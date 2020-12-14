@@ -1,7 +1,7 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import * as Relay from 'graphql-relay';
 import { PageInfo } from './page-info.type';
-import { AnyFunction } from '@harryy/nestjs-relay/types';
+import { AnyFunction } from '../types';
 
 export function Paginated<T>(typeFunc: AnyFunction): any {
   const classRef = typeFunc();
