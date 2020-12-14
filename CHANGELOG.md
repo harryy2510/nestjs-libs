@@ -1,3 +1,10 @@
+### [5.1.10](https://github.com/harryy2510/nestjs-relay/compare/5.1.9...5.1.10) (2020-12-14)
+
+
+### Bug Fixes
+
+* node prefix added ([ef19521](https://github.com/harryy2510/nestjs-relay/commit/ef195211f819e4a88185ac2c3dde02b02b0b3d1d))
+
 ### [5.1.9](https://github.com/harryy2510/nestjs-relay/compare/5.1.8...5.1.9) (2020-12-13)
 
 
