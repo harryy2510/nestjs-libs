@@ -1,12 +1,11 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
-import { createNodeId, Node, registerNodePrefix } from '@harryy/nestjs-relay';
 import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+  createNodeId,
+  Node,
+  NodeIdColumn,
+  registerNodePrefix,
+} from '@harryy/nestjs-relay';
+import { Column, CreateDateColumn, Entity, UpdateDateColumn } from 'typeorm';
 
 export const UserType = 'User';
 export const UserPrefix = 'usr';
@@ -17,10 +16,7 @@ registerNodePrefix(UserType, UserPrefix);
 @ObjectType({ implements: Node })
 export class User extends Node<User> {
   @Field(() => ID)
-  @PrimaryColumn({
-    length: 25,
-    type: 'varchar',
-  })
+  @NodeIdColumn()
   id: string = createNodeId(UserType);
 
   @Field()

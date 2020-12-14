@@ -1,6 +1,6 @@
-import { PrimaryColumn } from 'typeorm';
 import { Field, ID, InterfaceType } from '@nestjs/graphql';
 import { createNodeId, registerNodePrefix } from './node.method';
+import { NodeIdColumn } from './node.column';
 
 export const NodeType = 'Node';
 export const NodePrefix = 'nod';
@@ -10,10 +10,7 @@ registerNodePrefix(NodeType, NodePrefix);
 @InterfaceType('Node')
 export class Node<T = any> {
   @Field(() => ID)
-  @PrimaryColumn({
-    type: 'varchar',
-    length: 25,
-  })
+  @NodeIdColumn()
   id: string = createNodeId(NodeType);
 
   constructor(input: Partial<T>) {
