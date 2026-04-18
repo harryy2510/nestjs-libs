@@ -1,73 +1,126 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
+  <h1 align="center">NestJS Libs</h1>
+  <p align="center">
+    <strong>Relay-compliant GraphQL primitives for NestJS.</strong>
+  </p>
+  <p align="center">
+    <code>cursor pagination</code> · <code>global node IDs</code> · <code>mutation responses</code> · <code>TypeORM</code>
+  </p>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+<p align="center">
+  <a href="https://www.npmjs.com/package/@harryy/nestjs-relay"><img src="https://img.shields.io/npm/v/@harryy/nestjs-relay.svg?style=flat-square" alt="npm"></a>
+  <a href="https://nestjs.com"><img src="https://img.shields.io/badge/NestJS-E0234E?style=flat-square&logo=nestjs&logoColor=white" alt="NestJS"></a>
+  <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"></a>
+  <a href="https://graphql.org"><img src="https://img.shields.io/badge/GraphQL-E10098?style=flat-square&logo=graphql&logoColor=white" alt="GraphQL"></a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+> **Note:** This project is archived and no longer actively maintained.
 
-## Installation
+---
 
-```bash
-$ npm install
-```
-
-## Running the app
+## Install
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install @harryy/nestjs-relay
 ```
 
-## Test
+---
 
-```bash
-# unit tests
-$ npm run test
+## Node IDs
 
-# e2e tests
-$ npm run test:e2e
+Globally unique, type-prefixed IDs following the Relay Node specification.
 
-# test coverage
-$ npm run test:cov
+```typescript
+import { Node, createNodeId, parseId, NodeIdColumn } from '@harryy/nestjs-relay'
+
+@ObjectType({ implements: [Node] })
+class User {
+  @NodeIdColumn()
+  id: string
+}
+
+const id = createNodeId('User')    // "usr_V1StGXR8_Z5jdHi6B-myT"
+const parsed = parseId(id)          // { id, type: 'User', prefix: 'usr' }
 ```
 
-## Support
+```
+  createNodeId('User')
+       |
+       v
+  3-char prefix + nanoid
+       |
+       v
+  "usr_V1StGXR8_Z5jdHi6B-myT"    globally unique, type-decodable
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+---
 
-## Stay in touch
+## Pagination
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Cursor-based pagination with TypeORM integration.
+
+```typescript
+import { PaginationArgs, findAndPaginate, PaginatedDto } from '@harryy/nestjs-relay'
+
+@Resolver(() => User)
+class UserResolver {
+  @Query(() => PaginatedDto(User))
+  async users(@Args() args: PaginationArgs) {
+    return findAndPaginate({}, args, this.userRepo)
+  }
+}
+```
+
+Supports forward (`first`/`after`) and backward (`last`/`before`) pagination. Returns:
+
+```
+  {
+    edges: [{ node, cursor }]
+    pageInfo: {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+```
+
+---
+
+## Mutations
+
+Relay-compliant mutation responses with client mutation tracking.
+
+```typescript
+import { MutationInput, MutationResponse, createMutationResponse } from '@harryy/nestjs-relay'
+
+@InputType()
+class CreateUserInput extends MutationInput {
+  @Field()
+  name: string
+}
+
+@ObjectType()
+class CreateUserPayload extends MutationResponse(User) {}
+
+@Mutation(() => CreateUserPayload)
+async createUser(@Args('input') input: CreateUserInput) {
+  const user = await this.userService.create(input)
+  return createMutationResponse(input, user)
+}
+```
+
+---
+
+## Dependencies
+
+graphql, graphql-relay, @nestjs/common, @nestjs/typeorm, class-validator, nanoid
+
+---
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+MIT
